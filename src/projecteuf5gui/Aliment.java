@@ -5,13 +5,14 @@
  */
 package projecteuf5gui;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  *
  * @author alumne
  */
-public class Aliment implements Comparable{ 
+public class Aliment implements Comparable, Serializable{ 
     private String _1nom;
     private String _2tipus;
     private int _3cal; 

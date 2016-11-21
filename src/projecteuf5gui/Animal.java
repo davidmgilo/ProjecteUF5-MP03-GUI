@@ -5,6 +5,7 @@
  */
 package projecteuf5gui;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author alumne
  */
-public class Animal {
+public class Animal implements Serializable{
     private String _1nom;
     private String _2tipus;
     private double _3pes;
