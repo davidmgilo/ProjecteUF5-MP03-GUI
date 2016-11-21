@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projecteuf5gui;
+package entitats;
 
+import entitats.Aliment;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

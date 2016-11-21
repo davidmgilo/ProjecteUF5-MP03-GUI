@@ -5,6 +5,8 @@
  */
 package projecteuf5gui;
 
+import entitats.Animal;
+import entitats.Aliment;
 import java.awt.event.WindowEvent;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -12,7 +14,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -347,7 +348,7 @@ public class MainFrame extends javax.swing.JFrame {
                 }
                 entrada.close();      
        }else{
-           JOptionPane.showMessageDialog(rootPane, "No s'ha carregat correctament","Error en la càrrega",JOptionPane.ERROR_MESSAGE);
+           JOptionPane.showMessageDialog(rootPane, "No s'ha carregat correctament. El fitxer no existeix.","Error en la càrrega",JOptionPane.ERROR_MESSAGE);
        }
  
     }
