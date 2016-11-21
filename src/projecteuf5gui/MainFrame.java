@@ -8,10 +8,20 @@ package projecteuf5gui;
 import java.awt.event.WindowEvent;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -28,8 +38,17 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    public MainFrame() {
+    public MainFrame(){
         initComponents();
+        try{
+            carregaFitxer();
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Error en la càrrega",JOptionPane.ERROR_MESSAGE);
+        }finally{
+            setPrincipi();
+        }
+        
+        
     }
 
     /**
@@ -268,6 +287,10 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
 
+    public static ArrayList<Animal> animals;
+    public static TreeSet<Aliment> aliments;
+    public static File f = new File("animals.dat");
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AlimentPanel;
     private javax.swing.JPanel AnimalPanel;
@@ -282,7 +305,59 @@ public class MainFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void guardaFitxer() {
-        JOptionPane.showMessageDialog(rootPane, "No implementat");
+            try (
+                ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)));
+                )
+            {                                   
+                
+                for(int i=0;i<animals.size();i++)
+                {
+                    try{
+                        Animal a=(Animal)animals.get(i);
+                        out.writeObject(a);
+                    }
+                    catch(Exception ex){
+                        break;
+                    }
+                }
+                out.close();
+            }catch (IOException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Error en la escriptura",JOptionPane.ERROR_MESSAGE);
+            }
+    }
+
+    private void carregaFitxer() throws IOException {
+       animals = new ArrayList<>();
+       aliments = new TreeSet<>();
+       
+       if(f.exists()){
+           ObjectInputStream entrada=new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)));
+               
+                while(true)
+                {
+                    try{
+                        Animal a=(Animal)entrada.readObject();
+                        animals.add(a);
+                        ArrayList<Aliment> la =a.get5menja();
+                        aliments.addAll(la);
+                    }
+                    catch(Exception ex){
+                        break;
+                    }
+                }
+                entrada.close();      
+       }else{
+           JOptionPane.showMessageDialog(rootPane, "No s'ha carregat correctament","Error en la càrrega",JOptionPane.ERROR_MESSAGE);
+       }
+ 
+    }
+
+    private void setPrincipi() {
+       jPanel3.removeAll();
+       jPanel3.revalidate();
+       jPanel3.add(llistarPanel);
+       jPanel3.revalidate();
+       jPanel3.repaint();
     }
 }
 

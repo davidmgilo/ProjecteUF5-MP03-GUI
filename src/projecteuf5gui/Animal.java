@@ -19,7 +19,7 @@ public class Animal implements Serializable{
     private double _3pes;
     private double _4email_prop;
     //Ho faig en ArrayList perquè vull elements repetits i és més ràpid d'accés que una LinkedList.
-    private List<Aliment> _5menja = new ArrayList<>();
+    private ArrayList<Aliment> _5menja = new ArrayList<>();
 
     public Animal(String _1nom, String _2tipus, double _3pes, double _4email_prop) {
         this._1nom = _1nom;
@@ -62,11 +62,11 @@ public class Animal implements Serializable{
         this._4email_prop = _4email_prop;
     }
 
-    public List<Aliment> get5menja() {
+    public ArrayList<Aliment> get5menja() {
         return _5menja;
     }
 
-    public void set5menja(List<Aliment> _5menja) {
+    public void set5menja(ArrayList<Aliment> _5menja) {
         this._5menja = _5menja;
     }
   
