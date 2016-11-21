@@ -5,10 +5,10 @@
  */
 package entitats;
 
-import entitats.Aliment;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  *
@@ -18,11 +18,11 @@ public class Animal implements Serializable{
     private String _1nom;
     private String _2tipus;
     private double _3pes;
-    private double _4email_prop;
+    private String _4email_prop;
     //Ho faig en ArrayList perquè vull elements repetits i és més ràpid d'accés que una LinkedList.
     private ArrayList<Aliment> _5menja = new ArrayList<>();
 
-    public Animal(String _1nom, String _2tipus, double _3pes, double _4email_prop) {
+    public Animal(String _1nom, String _2tipus, double _3pes, String _4email_prop) {
         this._1nom = _1nom;
         this._2tipus = _2tipus;
         this._3pes = _3pes;
@@ -55,11 +55,11 @@ public class Animal implements Serializable{
         this._3pes = _3pes;
     }
 
-    public double get4email_prop() {
+    public String get4email_prop() {
         return _4email_prop;
     }
 
-    public void set4email_prop(double _4email_prop) {
+    public void set4email_prop(String _4email_prop) {
         this._4email_prop = _4email_prop;
     }
 
