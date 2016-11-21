@@ -39,17 +39,16 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    public MainFrame(){
+    public MainFrame() {
         initComponents();
-        try{
+        try {
             carregaFitxer();
-        }catch(IOException e){
-            JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Error en la càrrega",JOptionPane.ERROR_MESSAGE);
-        }finally{
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Error en la càrrega", JOptionPane.ERROR_MESSAGE);
+        } finally {
             setPrincipi();
         }
-        
-        
+
     }
 
     /**
@@ -91,9 +90,6 @@ public class MainFrame extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
-            }
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
             }
         });
 
@@ -340,20 +336,16 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void llistarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llistarButtonActionPerformed
         // TODO add your handling code here:
-        ModelTaula<Animal> mt = new ModelTaula(this.animals, Animal.class);
-        
+        ModelTaula<Animal> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, this.animals, Animal.class);
+
         llistarTable.setModel(mt);
-        
+
         jPanel3.removeAll();
         jPanel3.revalidate();
         jPanel3.add(llistarPanel);
         jPanel3.revalidate();
         jPanel3.repaint();
     }//GEN-LAST:event_llistarButtonActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formWindowClosed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:       
@@ -363,7 +355,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void sortirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortirButtonActionPerformed
         // TODO add your handling code here:
         this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-        
+
     }//GEN-LAST:event_sortirButtonActionPerformed
 
     private void crudAlimentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudAlimentButtonActionPerformed
@@ -387,9 +379,9 @@ public class MainFrame extends javax.swing.JFrame {
     private void creaAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaAnimalButtonActionPerformed
         // TODO add your handling code here:
         Animal a = new Animal(nomTextField.getText(),
-                 tipusTextField.getText(),
-                 Double.valueOf(pesTextField.getText()),
-                 emailTextField.getText());
+                tipusTextField.getText(),
+                Double.valueOf(pesTextField.getText()),
+                emailTextField.getText());
         animals.add(a);
     }//GEN-LAST:event_creaAnimalButtonActionPerformed
 
@@ -432,7 +424,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static ArrayList<Animal> animals;
     public static TreeSet<Aliment> aliments;
     public static File f = new File("animals.dat");
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AlimentPanel;
     private javax.swing.JPanel AnimalPanel;
@@ -461,68 +453,63 @@ public class MainFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void guardaFitxer() {
-            try (
-                ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)));
-                )
-            {                                   
-                
-                for(int i=0;i<animals.size();i++)
-                {
-                    try{
-                        Animal a=(Animal)animals.get(i);
-                        out.writeObject(a);
-                    }
-                    catch(Exception ex){
-                        break;
-                    }
+        try (
+                ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)));) {
+
+            for (int i = 0; i < animals.size(); i++) {
+                try {
+                    Animal a = (Animal) animals.get(i);
+                    out.writeObject(a);
+                } catch (Exception ex) {
+                    break;
                 }
-                out.close();
-            }catch (IOException e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Error en la escriptura",JOptionPane.ERROR_MESSAGE);
             }
+            out.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Error en la escriptura", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void carregaFitxer() throws IOException {
-       animals = new ArrayList<>();
-       aliments = new TreeSet<>();
-       
-       if(f.exists()){
-           ObjectInputStream entrada=new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)));
-               
-                while(true)
-                {
-                    try{
-                        Animal a=(Animal)entrada.readObject();
-                        animals.add(a);
-                        ArrayList<Aliment> la = a.get5menja();
-                        aliments.addAll(la);
-                    }
-                    catch(Exception ex){
-                        break;
-                    }
+        animals = new ArrayList<>();
+        aliments = new TreeSet<>();
+
+        if (f.exists()) {
+            ObjectInputStream entrada = new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)));
+
+            while (true) {
+                try {
+                    Animal a = (Animal) entrada.readObject();
+                    animals.add(a);
+                    ArrayList<Aliment> la = a.get5menja();
+                    aliments.addAll(la);
+                } catch (Exception ex) {
+                    break;
                 }
-                entrada.close();      
-       }else{
-           JOptionPane.showMessageDialog(rootPane, "No s'ha carregat correctament. El fitxer no existeix.","Error en la càrrega",JOptionPane.ERROR_MESSAGE);
-       }
- 
+            }
+            entrada.close();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No s'ha carregat correctament. El fitxer no existeix.", "Error en la càrrega", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     private void setPrincipi() {
-       ModelTaula<Animal> mt = new ModelTaula(this.animals, Animal.class);
+        ModelTaula<Animal> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, this.animals, Animal.class);
+
+        llistarTable.setModel(mt);
         
-       llistarTable.setModel(mt);
-        
-       jPanel3.removeAll();
-       jPanel3.revalidate();
-       jPanel3.add(llistarPanel);
-       jPanel3.revalidate();
-       jPanel3.repaint();
+        jPanel3.removeAll();
+        jPanel3.revalidate();
+        jPanel3.add(llistarPanel);
+        jPanel3.revalidate();
+        jPanel3.repaint();
+
     }
 }
 
 class ModelTaula<T> extends AbstractTableModel {
-    
+
     final Class<T> typeParameterClass;
 
     private String[] columnNames;
@@ -530,14 +517,14 @@ class ModelTaula<T> extends AbstractTableModel {
 
     public ModelTaula(String[] nomColumnes, ArrayList<T> dades, Class<T> typeParameterClass) {
         this.typeParameterClass = typeParameterClass;
-        
+
         this.columnNames = nomColumnes;
         this.dades = dades;
     }
 
     public ModelTaula(ArrayList<T> dades, Class<T> typeParameterClass) {
         this.typeParameterClass = typeParameterClass;
-        if(dades!=null && !dades.isEmpty()){
+        if (dades != null && !dades.isEmpty()) {
             //Obtinc els noms de les columnes a partir de la reflexió de la classe
             //Class<?> classe = dades.get(0).getClass();
             Class<?> classe = this.typeParameterClass;
@@ -547,14 +534,14 @@ class ModelTaula<T> extends AbstractTableModel {
 
             //Omplo l'array de noms de columna a partir del camps de la classe. Se suposa que el format dels noms dels camps 
             //és _xnom_camp, sent x un enter major o igual que 0, per això elimino els dígits i el _
-            this.columnNames=new String[ncamps];
+            this.columnNames = new String[ncamps];
 
-            for(int i=0;i<ncamps;i++){
+            for (int i = 0; i < ncamps; i++) {
                 //Busquem el primer grup de _dígits numèrics del nom de camp
                 Matcher matcher = Pattern.compile("_\\d+").matcher(classe.getDeclaredFields()[i].getName());
                 matcher.find();
                 //El nom que mostrarem serà a partir del següent caracter que hi ha després del _grup numèric trobat
-                this.columnNames[i]=classe.getDeclaredFields()[i].getName().substring(matcher.group().length()).toUpperCase();
+                this.columnNames[i] = classe.getDeclaredFields()[i].getName().substring(matcher.group().length()).toUpperCase();
                 //this.columnNames[i]=classe.getDeclaredFields()[i].getName().replaceAll("[_0-9]", "").toUpperCase();
                 //this.columnNames[i]=classe.getDeclaredFields()[i].getName().replaceAll("[_\\d]", "").toUpperCase();
             }
@@ -567,25 +554,29 @@ class ModelTaula<T> extends AbstractTableModel {
     public String getColumnName(int column) {
         return columnNames[column];
     }
-    
+
     //Necessari per a que mostre el número correcte de files de dades
     @Override
     public int getRowCount() {
-        int cont=0;
-        
-        if(dades!=null) cont=dades.size();
-        
+        int cont = 0;
+
+        if (dades != null) {
+            cont = dades.size();
+        }
+
         return cont;
     }
 
     //Necessari per a que mostre el número correcte de columnes 
     @Override
     public int getColumnCount() {
-        
-        int cont=0;
-        
-        if(columnNames!=null) cont=columnNames.length;
-        
+
+        int cont = 0;
+
+        if (columnNames != null) {
+            cont = columnNames.length;
+        }
+
         return cont;
     }
 
@@ -593,7 +584,9 @@ class ModelTaula<T> extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         //Si demanen la columna -1 vol dir que hem de retornar tot l'objecte contingut a la fila
-        if(columnIndex==-1) return dades.get(rowIndex);
+        if (columnIndex == -1) {
+            return dades.get(rowIndex);
+        }
         Class<?> classe = this.typeParameterClass;
         //Class<?> classe = dades.get(0).getClass();
         //Anotem el nº de camps de la classe
