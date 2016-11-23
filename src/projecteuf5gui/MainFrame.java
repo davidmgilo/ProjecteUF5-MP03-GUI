@@ -282,6 +282,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel5.setText("Aliments :");
 
         borraAnimalButton.setText("Borra");
+        borraAnimalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borraAnimalButtonActionPerformed(evt);
+            }
+        });
 
         modificaAnimalButton.setText("Modifica");
 
@@ -646,15 +651,21 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void cancelAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelAnimalButtonActionPerformed
         // TODO add your handling code here:
-            nomTextField.setText("");
-            tipusComboBox.setSelectedIndex(0);
-            pesTextField.setText("");
-            emailTextField.setText("");
-            AlimentsAnimalTable.getSelectionModel().clearSelection(); 
-            animalsTable.getSelectionModel().clearSelection();
-            borraAnimalButton.setEnabled(false);
-            modificaAnimalButton.setEnabled(false);
+            neteja();
     }//GEN-LAST:event_cancelAnimalButtonActionPerformed
+
+    private void borraAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borraAnimalButtonActionPerformed
+        // TODO add your handling code here:
+        Animal a=(Animal)animalsTable.getModel().getValueAt(animalsTable.getSelectedRow(),-1);
+        animals.remove(a);
+        
+        ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
+
+        animalsTable.setModel(m);
+        
+        neteja();
+        
+    }//GEN-LAST:event_borraAnimalButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -804,6 +815,17 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3.revalidate();
         jPanel3.repaint();
 
+    }
+
+    private void neteja() {
+        nomTextField.setText("");
+        tipusComboBox.setSelectedIndex(0);
+        pesTextField.setText("");
+        emailTextField.setText("");
+        AlimentsAnimalTable.getSelectionModel().clearSelection(); 
+        animalsTable.getSelectionModel().clearSelection();
+        borraAnimalButton.setEnabled(false);
+        modificaAnimalButton.setEnabled(false);
     }
 }
 
