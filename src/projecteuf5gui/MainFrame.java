@@ -7,6 +7,7 @@ package projecteuf5gui;
 
 import entitats.Animal;
 import entitats.Aliment;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -103,6 +104,8 @@ public class MainFrame extends javax.swing.JFrame {
         llistarTable = new javax.swing.JTable();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        welcomePanel = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -115,7 +118,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(24, 29, 47));
 
         jPanel2.setBackground(new java.awt.Color(24, 29, 47));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Accions", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(254, 254, 254)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Accions", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(254, 254, 254))); // NOI18N
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         llistarButton.setText("Llistar Animals");
@@ -157,7 +160,7 @@ public class MainFrame extends javax.swing.JFrame {
         AlimentPanel.setBackground(new java.awt.Color(29, 50, 47));
 
         jPanel6.setBackground(new java.awt.Color(29, 50, 47));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Creació", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, null, new java.awt.Color(255, 255, 255)));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Creació", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nom :");
@@ -167,12 +170,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Calories :");
-
-        nomAlTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomAlTextFieldActionPerformed(evt);
-            }
-        });
 
         creaAlButton.setText("Crear");
         creaAlButton.addActionListener(new java.awt.event.ActionListener() {
@@ -186,10 +183,9 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(207, 207, 207)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(creaAlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
@@ -198,8 +194,11 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nomAlTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                             .addComponent(tipusAlTextField)
-                            .addComponent(calTextField))))
-                .addContainerGap(301, Short.MAX_VALUE))
+                            .addComponent(calTextField)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(243, 243, 243)
+                        .addComponent(creaAlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,9 +215,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(calTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(creaAlButton)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout AlimentPanelLayout = new javax.swing.GroupLayout(AlimentPanel);
@@ -235,7 +234,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(AlimentPanelLayout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         jPanel3.add(AlimentPanel, "card2");
@@ -243,7 +242,7 @@ public class MainFrame extends javax.swing.JFrame {
         AnimalPanel.setBackground(new java.awt.Color(29, 50, 47));
 
         jPanel4.setBackground(new java.awt.Color(29, 50, 47));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CRUD", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, null, new java.awt.Color(255, 255, 255)));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CRUD", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(251, 237, 237));
 
         jLabel1.setForeground(new java.awt.Color(249, 235, 235));
@@ -257,6 +256,24 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(250, 243, 243));
         jLabel4.setText("E-mail :");
+
+        nomTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomTextFieldFocusLost(evt);
+            }
+        });
+
+        pesTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pesTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pesTextFieldFocusLost(evt);
+            }
+        });
 
         creaAnimalButton.setText("Crea");
         creaAnimalButton.addActionListener(new java.awt.event.ActionListener() {
@@ -289,6 +306,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         modificaAnimalButton.setText("Modifica");
+        modificaAnimalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificaAnimalButtonActionPerformed(evt);
+            }
+        });
 
         cancelAnimalButton.setText("Cancel·la");
         cancelAnimalButton.addActionListener(new java.awt.event.ActionListener() {
@@ -305,35 +327,35 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(cancelAnimalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 481, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(nomTextField))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel2)
                                         .addComponent(jLabel3)
                                         .addComponent(jLabel4))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addGap(11, 11, 11)
-                                            .addComponent(tipusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(emailTextField))))
-                                .addComponent(pesTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(creaAnimalButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(borraAnimalButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(modificaAnimalButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 45, Short.MAX_VALUE))
-                    .addComponent(cancelAnimalButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                                        .addComponent(pesTextField)
+                                        .addComponent(emailTextField)
+                                        .addComponent(tipusComboBox, 0, 96, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(creaAnimalButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(borraAnimalButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(modificaAnimalButton, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                                    .addGap(12, 12, 12)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(20, 20, 20)
+                                .addComponent(nomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -363,16 +385,17 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(creaAnimalButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(borraAnimalButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(modificaAnimalButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancelAnimalButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cancelAnimalButton)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(29, 50, 47));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Llista", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, null, java.awt.Color.white));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Llista", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 0, 12), java.awt.Color.white)); // NOI18N
 
         animalsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -404,8 +427,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 67, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout AnimalPanelLayout = new javax.swing.GroupLayout(AnimalPanel);
@@ -454,7 +477,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(llistarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
                     .addComponent(filler1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -466,11 +489,37 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel3.add(llistarPanel, "card2");
+
+        welcomePanel.setBackground(new java.awt.Color(29, 50, 47));
+
+        jLabel9.setFont(new java.awt.Font("Noto Sans", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(247, 245, 245));
+        jLabel9.setText("Benvinguts a l'aplicació !!");
+        jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout welcomePanelLayout = new javax.swing.GroupLayout(welcomePanel);
+        welcomePanel.setLayout(welcomePanelLayout);
+        welcomePanelLayout.setHorizontalGroup(
+            welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(welcomePanelLayout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+        welcomePanelLayout.setVerticalGroup(
+            welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(welcomePanelLayout.createSequentialGroup()
+                .addGap(205, 205, 205)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(298, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(welcomePanel, "card2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -566,6 +615,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         borraAnimalButton.setEnabled(false);
         modificaAnimalButton.setEnabled(false);
+        creaAnimalButton.setEnabled(false);
         
         jPanel3.removeAll();
         jPanel3.revalidate();
@@ -573,30 +623,6 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3.revalidate();
         jPanel3.repaint();
     }//GEN-LAST:event_crudAnimalButtonActionPerformed
-
-    private void creaAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaAnimalButtonActionPerformed
-        // TODO add your handling code here:
-        Animal a = new Animal(nomTextField.getText(),
-                (String)tipusComboBox.getSelectedItem(),
-                Double.valueOf(pesTextField.getText()),
-                emailTextField.getText());
-        int[] selecs=AlimentsAnimalTable.getSelectedRows();
-        ArrayList<Aliment> alim=new ArrayList<>();
-        for (int i = 0; i < selecs.length; i++) {
-            alim.add((Aliment)AlimentsAnimalTable.getModel().getValueAt(selecs[i],-1));
-        }
-        a.set5menja(alim);
-        animals.add(a);
-        
-        if(tipus.add((String)tipusComboBox.getSelectedItem())){
-            tipusComboBox.addItem((String)tipusComboBox.getSelectedItem());
-            tipus.add((String)tipusComboBox.getSelectedItem());
-        }
-        
-        ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
-
-        animalsTable.setModel(m);
-    }//GEN-LAST:event_creaAnimalButtonActionPerformed
 
     private void animalsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_animalsTableMouseClicked
         // TODO add your handling code here:
@@ -635,10 +661,6 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_animalsTableMouseClicked
 
-    private void nomAlTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomAlTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomAlTextFieldActionPerformed
-
     private void creaAlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaAlButtonActionPerformed
         // TODO add your handling code here:
          Aliment a = new Aliment(nomAlTextField.getText(),
@@ -651,21 +673,96 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void cancelAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelAnimalButtonActionPerformed
         // TODO add your handling code here:
-            neteja();
+        neteja();
     }//GEN-LAST:event_cancelAnimalButtonActionPerformed
+
+    private void modificaAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAnimalButtonActionPerformed
+        // TODO add your handling code here:
+        Animal a=(Animal)animalsTable.getModel().getValueAt(animalsTable.getSelectedRow(),-1);
+
+        a.set1nom(nomTextField.getText());
+        a.set2tipus((String)tipusComboBox.getSelectedItem());
+        a.set3pes(Double.valueOf(pesTextField.getText()));
+        a.set4email_prop( emailTextField.getText());
+        int[] selecs = AlimentsAnimalTable.getSelectedRows();
+        ArrayList<Aliment> alim=new ArrayList<>();
+        for (int i = 0; i < selecs.length; i++) {
+            alim.add((Aliment)AlimentsAnimalTable.getModel().getValueAt(selecs[i],-1));
+        }
+        a.set5menja(alim);
+
+        ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
+
+        animalsTable.setModel(m);
+
+        neteja();
+
+    }//GEN-LAST:event_modificaAnimalButtonActionPerformed
 
     private void borraAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borraAnimalButtonActionPerformed
         // TODO add your handling code here:
         Animal a=(Animal)animalsTable.getModel().getValueAt(animalsTable.getSelectedRow(),-1);
         animals.remove(a);
-        
+
         ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
 
         animalsTable.setModel(m);
-        
+
         neteja();
-        
+
     }//GEN-LAST:event_borraAnimalButtonActionPerformed
+
+    private void creaAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaAnimalButtonActionPerformed
+        // TODO add your handling code here:
+        Animal a = new Animal(nomTextField.getText(),
+            (String)tipusComboBox.getSelectedItem(),
+            Double.valueOf(pesTextField.getText()),
+            emailTextField.getText());
+        int[] selecs=AlimentsAnimalTable.getSelectedRows();
+        ArrayList<Aliment> alim=new ArrayList<>();
+        for (int i = 0; i < selecs.length; i++) {
+            alim.add((Aliment)AlimentsAnimalTable.getModel().getValueAt(selecs[i],-1));
+        }
+        a.set5menja(alim);
+        animals.add(a);
+
+        if(tipus.add((String)tipusComboBox.getSelectedItem())){
+            tipusComboBox.addItem((String)tipusComboBox.getSelectedItem());
+            tipus.add((String)tipusComboBox.getSelectedItem());
+        }
+
+        ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
+
+        animalsTable.setModel(m);
+    }//GEN-LAST:event_creaAnimalButtonActionPerformed
+
+    private void nomTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomTextFieldFocusLost
+        // TODO add your handling code here:
+        if(nomTextField.getText().equals("")){
+            nomTextField.setForeground(Color.red);
+            nomTextField.setText("No pot estar buit!");
+        }
+        acceptaONo();
+    }//GEN-LAST:event_nomTextFieldFocusLost
+
+    private void nomTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomTextFieldFocusGained
+        // TODO add your handling code here:
+        nomTextField.setForeground(Color.black);
+    }//GEN-LAST:event_nomTextFieldFocusGained
+
+    private void pesTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pesTextFieldFocusLost
+        // TODO add your handling code here:
+        if(!pesTextField.getText().matches("\\d+\\.?\\d*")){
+            pesTextField.setForeground(Color.red);
+            pesTextField.setText("Format incorrecte!");
+        }
+        acceptaONo();
+    }//GEN-LAST:event_pesTextFieldFocusLost
+
+    private void pesTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pesTextFieldFocusGained
+        // TODO add your handling code here:
+        pesTextField.setForeground(Color.black);
+    }//GEN-LAST:event_pesTextFieldFocusGained
 
     /**
      * @param args the command line arguments
@@ -731,6 +828,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -750,6 +848,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton sortirButton;
     private javax.swing.JTextField tipusAlTextField;
     private javax.swing.JComboBox tipusComboBox;
+    private javax.swing.JPanel welcomePanel;
     // End of variables declaration//GEN-END:variables
 
     private void guardaFitxer() {
@@ -811,7 +910,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         jPanel3.removeAll();
         jPanel3.revalidate();
-        jPanel3.add(llistarPanel);
+        jPanel3.add(welcomePanel);
         jPanel3.revalidate();
         jPanel3.repaint();
 
@@ -826,6 +925,28 @@ public class MainFrame extends javax.swing.JFrame {
         animalsTable.getSelectionModel().clearSelection();
         borraAnimalButton.setEnabled(false);
         modificaAnimalButton.setEnabled(false);
+        creaAnimalButton.setEnabled(false);
+    }
+
+    private void acceptaONo() {
+        int i=animalsTable.getSelectedRow();
+        
+
+        if(nomTextField.getText().equals("") || nomTextField.getText().equals("No pot estar buit!")
+                || pesTextField.getText().matches("\\d+\\.?\\d*") || pesTextField.getText().equals("Format incorrecte!")){
+            borraAnimalButton.setEnabled(false);
+            modificaAnimalButton.setEnabled(false);
+            creaAnimalButton.setEnabled(false);
+        }
+        else{
+            if(i!=-1){
+                borraAnimalButton.setEnabled(true);
+                modificaAnimalButton.setEnabled(true); 
+            }else{
+                creaAnimalButton.setEnabled(true); 
+            }
+              
+        }
     }
 }
 
