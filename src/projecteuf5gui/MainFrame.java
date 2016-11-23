@@ -29,6 +29,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -69,6 +70,14 @@ public class MainFrame extends javax.swing.JFrame {
         sortirButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         AlimentPanel = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        nomAlTextField = new javax.swing.JTextField();
+        tipusAlTextField = new javax.swing.JTextField();
+        calTextField = new javax.swing.JTextField();
+        creaAlButton = new javax.swing.JButton();
         AnimalPanel = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -83,6 +92,8 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         AlimentsAnimalTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
+        borraAnimalButton = new javax.swing.JButton();
+        modificaAnimalButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         animalsTable = new javax.swing.JTable();
@@ -144,15 +155,86 @@ public class MainFrame extends javax.swing.JFrame {
 
         AlimentPanel.setBackground(new java.awt.Color(29, 50, 47));
 
+        jPanel6.setBackground(new java.awt.Color(29, 50, 47));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Creació", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, null, new java.awt.Color(255, 255, 255)));
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Nom :");
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Tipus :");
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Calories :");
+
+        nomAlTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomAlTextFieldActionPerformed(evt);
+            }
+        });
+
+        creaAlButton.setText("Crear");
+        creaAlButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creaAlButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(207, 207, 207)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(creaAlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nomAlTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                            .addComponent(tipusAlTextField)
+                            .addComponent(calTextField))))
+                .addContainerGap(301, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(nomAlTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(tipusAlTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(calTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(creaAlButton)
+                .addContainerGap(170, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout AlimentPanelLayout = new javax.swing.GroupLayout(AlimentPanel);
         AlimentPanel.setLayout(AlimentPanelLayout);
         AlimentPanelLayout.setHorizontalGroup(
             AlimentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 679, Short.MAX_VALUE)
+            .addGroup(AlimentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         AlimentPanelLayout.setVerticalGroup(
             AlimentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(AlimentPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         jPanel3.add(AlimentPanel, "card2");
@@ -160,7 +242,7 @@ public class MainFrame extends javax.swing.JFrame {
         AnimalPanel.setBackground(new java.awt.Color(29, 50, 47));
 
         jPanel4.setBackground(new java.awt.Color(29, 50, 47));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Creació", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, null, new java.awt.Color(255, 255, 255)));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CRUD", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, null, new java.awt.Color(255, 255, 255)));
         jPanel4.setForeground(new java.awt.Color(251, 237, 237));
 
         jLabel1.setForeground(new java.awt.Color(249, 235, 235));
@@ -198,6 +280,10 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Aliments :");
 
+        borraAnimalButton.setText("Borrar");
+
+        modificaAnimalButton.setText("Modifica");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -223,7 +309,10 @@ public class MainFrame extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(emailTextField))))
                         .addComponent(pesTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(creaAnimalButton))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(creaAnimalButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(borraAnimalButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(modificaAnimalButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,7 +341,11 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(creaAnimalButton))
+                        .addComponent(creaAnimalButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(borraAnimalButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(modificaAnimalButton))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel5)
@@ -262,7 +355,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         jPanel5.setBackground(new java.awt.Color(29, 50, 47));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Animals ", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, null, java.awt.Color.white));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Llista", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, null, java.awt.Color.white));
 
         animalsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -275,6 +368,11 @@ public class MainFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        animalsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                animalsTableMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(animalsTable);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -290,7 +388,7 @@ public class MainFrame extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 73, Short.MAX_VALUE))
+                .addGap(0, 71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout AnimalPanelLayout = new javax.swing.GroupLayout(AnimalPanel);
@@ -398,7 +496,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void llistarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llistarButtonActionPerformed
         // TODO add your handling code here:
-        ModelTaula<Animal> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, this.animals, Animal.class);
+        ModelTaula<Animal> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
 
         llistarTable.setModel(mt);
 
@@ -422,6 +520,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void crudAlimentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudAlimentButtonActionPerformed
         // TODO add your handling code here:
+        nomAlTextField.setText("");
+        tipusAlTextField.setText("");
+        calTextField.setText("");
+        
         jPanel3.removeAll();
         jPanel3.revalidate();
         jPanel3.add(AlimentPanel);
@@ -437,13 +539,16 @@ public class MainFrame extends javax.swing.JFrame {
         pesTextField.setText("");
         emailTextField.setText("");
         
-        ModelTaula<Aliment> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Cal"},new ArrayList( this.aliments), Aliment.class);
+        ModelTaula<Aliment> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Cal"},new ArrayList( MainFrame.aliments), Aliment.class);
 
         AlimentsAnimalTable.setModel(mt);
         
-        ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, this.animals, Animal.class);
+        ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
 
         animalsTable.setModel(m);
+        
+        borraAnimalButton.setEnabled(false);
+        modificaAnimalButton.setEnabled(false);
         
         jPanel3.removeAll();
         jPanel3.revalidate();
@@ -458,12 +563,74 @@ public class MainFrame extends javax.swing.JFrame {
                 (String)tipusComboBox.getSelectedItem(),
                 Double.valueOf(pesTextField.getText()),
                 emailTextField.getText());
+        int[] selecs=AlimentsAnimalTable.getSelectedRows();
+        ArrayList<Aliment> alim=new ArrayList<>();
+        for (int i = 0; i < selecs.length; i++) {
+            alim.add((Aliment)AlimentsAnimalTable.getModel().getValueAt(selecs[i],-1));
+        }
+        a.set5menja(alim);
         animals.add(a);
         
-        ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, this.animals, Animal.class);
+        if(tipus.add((String)tipusComboBox.getSelectedItem())){
+            tipusComboBox.addItem((String)tipusComboBox.getSelectedItem());
+            tipus.add((String)tipusComboBox.getSelectedItem());
+        }
+        
+        ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
 
         animalsTable.setModel(m);
     }//GEN-LAST:event_creaAnimalButtonActionPerformed
+
+    private void animalsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_animalsTableMouseClicked
+        // TODO add your handling code here:
+        int i=animalsTable.getSelectedRow();
+        
+        if(i!=-1){
+            borraAnimalButton.setEnabled(true);
+            modificaAnimalButton.setEnabled(true);
+
+
+            ModelTaula<Animal> mt=(ModelTaula<Animal>)animalsTable.getModel();
+            nomTextField.setText((String)mt.getValueAt(i, 0));
+            tipusComboBox.setSelectedItem((String)mt.getValueAt(i, 1));
+            pesTextField.setText(mt.getValueAt(i, 2).toString());
+            emailTextField.setText(mt.getValueAt(i, 3).toString());
+            
+            ArrayList<Aliment> la=(ArrayList<Aliment>)mt.getValueAt(i, 4);
+            AlimentsAnimalTable.getSelectionModel().clearSelection();
+            if(!la.isEmpty()){
+                ModelTaula<Aliment> mt2=(ModelTaula<Aliment>)AlimentsAnimalTable.getModel();
+                for (int j = 0; j < mt2.getRowCount(); j++) {
+                    if(la.contains((Aliment)mt2.getValueAt(j, -1)))
+                        AlimentsAnimalTable.getSelectionModel().addSelectionInterval(j, j);
+
+                }
+            }
+        }else{
+            nomTextField.setText("");
+            tipusComboBox.setSelectedIndex(0);
+            pesTextField.setText("");
+            emailTextField.setText("");
+            AlimentsAnimalTable.getSelectionModel().clearSelection();  
+            borraAnimalButton.setEnabled(false);
+            modificaAnimalButton.setEnabled(false);
+
+        }
+    }//GEN-LAST:event_animalsTableMouseClicked
+
+    private void nomAlTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomAlTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomAlTextFieldActionPerformed
+
+    private void creaAlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaAlButtonActionPerformed
+        // TODO add your handling code here:
+         Aliment a = new Aliment(nomAlTextField.getText(),
+                tipusAlTextField.getText(),
+                Integer.valueOf(calTextField.getText()));
+         aliments.add(a);
+         
+         JOptionPane.showMessageDialog(this, "Aliment creat");
+    }//GEN-LAST:event_creaAlButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -511,6 +678,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTable AlimentsAnimalTable;
     private javax.swing.JPanel AnimalPanel;
     private javax.swing.JTable animalsTable;
+    private javax.swing.JButton borraAnimalButton;
+    private javax.swing.JTextField calTextField;
+    private javax.swing.JButton creaAlButton;
     private javax.swing.JButton creaAnimalButton;
     private javax.swing.JButton crudAlimentButton;
     private javax.swing.JButton crudAnimalButton;
@@ -522,20 +692,27 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton llistarButton;
     private javax.swing.JPanel llistarPanel;
     private javax.swing.JTable llistarTable;
+    private javax.swing.JButton modificaAnimalButton;
+    private javax.swing.JTextField nomAlTextField;
     private javax.swing.JTextField nomTextField;
     private javax.swing.JTextField pesTextField;
     private javax.swing.JButton sortirButton;
+    private javax.swing.JTextField tipusAlTextField;
     private javax.swing.JComboBox tipusComboBox;
     // End of variables declaration//GEN-END:variables
 
@@ -583,8 +760,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     }
 
-    private void setPrincipi() {
-        ModelTaula<Animal> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, this.animals, Animal.class);
+    private void setPrincipi() {        
+        ModelTaula<Animal> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
 
         llistarTable.setModel(mt);
         llistarTable.setRowSelectionAllowed(false);
@@ -593,6 +770,8 @@ public class MainFrame extends javax.swing.JFrame {
         while(it.hasNext()){
           tipusComboBox.addItem(it.next());
         }
+        
+        animalsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
         jPanel3.removeAll();
         jPanel3.revalidate();
