@@ -933,7 +933,7 @@ public class MainFrame extends javax.swing.JFrame {
         
 
         if(nomTextField.getText().equals("") || nomTextField.getText().equals("No pot estar buit!")
-                || pesTextField.getText().matches("\\d+\\.?\\d*") || pesTextField.getText().equals("Format incorrecte!")){
+                || !pesTextField.getText().matches("\\d+\\.?\\d*") || pesTextField.getText().equals("Format incorrecte!")){
             borraAnimalButton.setEnabled(false);
             modificaAnimalButton.setEnabled(false);
             creaAnimalButton.setEnabled(false);
