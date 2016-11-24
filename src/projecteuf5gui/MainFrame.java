@@ -35,7 +35,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author alumne
+ * @author David Martinez Gilo
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -171,6 +171,33 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Calories :");
 
+        nomAlTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomAlTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomAlTextFieldFocusLost(evt);
+            }
+        });
+
+        tipusAlTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tipusAlTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tipusAlTextFieldFocusLost(evt);
+            }
+        });
+
+        calTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                calTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                calTextFieldFocusLost(evt);
+            }
+        });
+
         creaAlButton.setText("Crear");
         creaAlButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,6 +302,15 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        emailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailTextFieldFocusLost(evt);
+            }
+        });
+
         creaAnimalButton.setText("Crea");
         creaAnimalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,7 +366,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(cancelAnimalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 481, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,8 +387,8 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(20, 20, 20)
-                                .addComponent(nomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nomTextField)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))))
@@ -589,7 +625,8 @@ public class MainFrame extends javax.swing.JFrame {
         nomAlTextField.setText("");
         tipusAlTextField.setText("");
         calTextField.setText("");
-        
+        creaAlButton.setEnabled(false);
+
         jPanel3.removeAll();
         jPanel3.revalidate();
         jPanel3.add(AlimentPanel);
@@ -604,19 +641,19 @@ public class MainFrame extends javax.swing.JFrame {
         tipusComboBox.setSelectedIndex(0);
         pesTextField.setText("");
         emailTextField.setText("");
-        
-        ModelTaula<Aliment> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Cal"},new ArrayList( MainFrame.aliments), Aliment.class);
+
+        ModelTaula<Aliment> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Cal"}, new ArrayList(MainFrame.aliments), Aliment.class);
 
         AlimentsAnimalTable.setModel(mt);
-        
+
         ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
 
         animalsTable.setModel(m);
-        
+
         borraAnimalButton.setEnabled(false);
         modificaAnimalButton.setEnabled(false);
         creaAnimalButton.setEnabled(false);
-        
+
         jPanel3.removeAll();
         jPanel3.revalidate();
         jPanel3.add(AnimalPanel);
@@ -626,35 +663,35 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void animalsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_animalsTableMouseClicked
         // TODO add your handling code here:
-        int i=animalsTable.getSelectedRow();
-        
-        if(i!=-1){
+        int i = animalsTable.getSelectedRow();
+
+        if (i != -1) {
             borraAnimalButton.setEnabled(true);
             modificaAnimalButton.setEnabled(true);
 
-
-            ModelTaula<Animal> mt=(ModelTaula<Animal>)animalsTable.getModel();
-            nomTextField.setText((String)mt.getValueAt(i, 0));
-            tipusComboBox.setSelectedItem((String)mt.getValueAt(i, 1));
+            ModelTaula<Animal> mt = (ModelTaula<Animal>) animalsTable.getModel();
+            nomTextField.setText((String) mt.getValueAt(i, 0));
+            tipusComboBox.setSelectedItem((String) mt.getValueAt(i, 1));
             pesTextField.setText(mt.getValueAt(i, 2).toString());
             emailTextField.setText(mt.getValueAt(i, 3).toString());
-            
-            ArrayList<Aliment> la=(ArrayList<Aliment>)mt.getValueAt(i, 4);
+
+            ArrayList<Aliment> la = (ArrayList<Aliment>) mt.getValueAt(i, 4);
             AlimentsAnimalTable.getSelectionModel().clearSelection();
-            if(!la.isEmpty()){
-                ModelTaula<Aliment> mt2=(ModelTaula<Aliment>)AlimentsAnimalTable.getModel();
+            if (!la.isEmpty()) {
+                ModelTaula<Aliment> mt2 = (ModelTaula<Aliment>) AlimentsAnimalTable.getModel();
                 for (int j = 0; j < mt2.getRowCount(); j++) {
-                    if(la.contains((Aliment)mt2.getValueAt(j, -1)))
+                    if (la.contains((Aliment) mt2.getValueAt(j, -1))) {
                         AlimentsAnimalTable.getSelectionModel().addSelectionInterval(j, j);
+                    }
 
                 }
             }
-        }else{
+        } else {
             nomTextField.setText("");
             tipusComboBox.setSelectedIndex(0);
             pesTextField.setText("");
             emailTextField.setText("");
-            AlimentsAnimalTable.getSelectionModel().clearSelection();  
+            AlimentsAnimalTable.getSelectionModel().clearSelection();
             borraAnimalButton.setEnabled(false);
             modificaAnimalButton.setEnabled(false);
 
@@ -663,12 +700,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void creaAlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaAlButtonActionPerformed
         // TODO add your handling code here:
-         Aliment a = new Aliment(nomAlTextField.getText(),
+        Aliment a = new Aliment(nomAlTextField.getText(),
                 tipusAlTextField.getText(),
                 Integer.valueOf(calTextField.getText()));
-         aliments.add(a);
-         
-         JOptionPane.showMessageDialog(this, "Aliment creat");
+        aliments.add(a);
+
+        JOptionPane.showMessageDialog(this, "Aliment creat");
     }//GEN-LAST:event_creaAlButtonActionPerformed
 
     private void cancelAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelAnimalButtonActionPerformed
@@ -678,16 +715,16 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void modificaAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAnimalButtonActionPerformed
         // TODO add your handling code here:
-        Animal a=(Animal)animalsTable.getModel().getValueAt(animalsTable.getSelectedRow(),-1);
+        Animal a = (Animal) animalsTable.getModel().getValueAt(animalsTable.getSelectedRow(), -1);
 
         a.set1nom(nomTextField.getText());
-        a.set2tipus((String)tipusComboBox.getSelectedItem());
+        a.set2tipus((String) tipusComboBox.getSelectedItem());
         a.set3pes(Double.valueOf(pesTextField.getText()));
-        a.set4email_prop( emailTextField.getText());
+        a.set4email_prop(emailTextField.getText());
         int[] selecs = AlimentsAnimalTable.getSelectedRows();
-        ArrayList<Aliment> alim=new ArrayList<>();
+        ArrayList<Aliment> alim = new ArrayList<>();
         for (int i = 0; i < selecs.length; i++) {
-            alim.add((Aliment)AlimentsAnimalTable.getModel().getValueAt(selecs[i],-1));
+            alim.add((Aliment) AlimentsAnimalTable.getModel().getValueAt(selecs[i], -1));
         }
         a.set5menja(alim);
 
@@ -701,7 +738,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void borraAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borraAnimalButtonActionPerformed
         // TODO add your handling code here:
-        Animal a=(Animal)animalsTable.getModel().getValueAt(animalsTable.getSelectedRow(),-1);
+        Animal a = (Animal) animalsTable.getModel().getValueAt(animalsTable.getSelectedRow(), -1);
         animals.remove(a);
 
         ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
@@ -715,20 +752,20 @@ public class MainFrame extends javax.swing.JFrame {
     private void creaAnimalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaAnimalButtonActionPerformed
         // TODO add your handling code here:
         Animal a = new Animal(nomTextField.getText(),
-            (String)tipusComboBox.getSelectedItem(),
-            Double.valueOf(pesTextField.getText()),
-            emailTextField.getText());
-        int[] selecs=AlimentsAnimalTable.getSelectedRows();
-        ArrayList<Aliment> alim=new ArrayList<>();
+                (String) tipusComboBox.getSelectedItem(),
+                Double.valueOf(pesTextField.getText()),
+                emailTextField.getText());
+        int[] selecs = AlimentsAnimalTable.getSelectedRows();
+        ArrayList<Aliment> alim = new ArrayList<>();
         for (int i = 0; i < selecs.length; i++) {
-            alim.add((Aliment)AlimentsAnimalTable.getModel().getValueAt(selecs[i],-1));
+            alim.add((Aliment) AlimentsAnimalTable.getModel().getValueAt(selecs[i], -1));
         }
         a.set5menja(alim);
         animals.add(a);
 
-        if(tipus.add((String)tipusComboBox.getSelectedItem())){
-            tipusComboBox.addItem((String)tipusComboBox.getSelectedItem());
-            tipus.add((String)tipusComboBox.getSelectedItem());
+        if (tipus.add((String) tipusComboBox.getSelectedItem())) {
+            tipusComboBox.addItem((String) tipusComboBox.getSelectedItem());
+            tipus.add((String) tipusComboBox.getSelectedItem());
         }
 
         ModelTaula<Animal> m = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
@@ -738,7 +775,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void nomTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomTextFieldFocusLost
         // TODO add your handling code here:
-        if(nomTextField.getText().equals("")){
+        if (nomTextField.getText().equals("")) {
             nomTextField.setForeground(Color.red);
             nomTextField.setText("No pot estar buit!");
         }
@@ -752,7 +789,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void pesTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pesTextFieldFocusLost
         // TODO add your handling code here:
-        if(!pesTextField.getText().matches("\\d+\\.?\\d*")){
+        if (!pesTextField.getText().matches("\\d+\\.?\\d*")) {
             pesTextField.setForeground(Color.red);
             pesTextField.setText("Format incorrecte!");
         }
@@ -763,6 +800,64 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         pesTextField.setForeground(Color.black);
     }//GEN-LAST:event_pesTextFieldFocusGained
+
+    private void emailTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextFieldFocusGained
+        // TODO add your handling code here:
+        emailTextField.setForeground(Color.black);
+    }//GEN-LAST:event_emailTextFieldFocusGained
+
+    private void emailTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextFieldFocusLost
+        // TODO add your handling code here:
+        if (!emailTextField.getText().matches("\\w+\\.?\\w+@\\w+\\.\\w+")) {
+            emailTextField.setForeground(Color.red);
+            emailTextField.setText("Format incorrecte!");
+        }
+        acceptaONo();
+    }//GEN-LAST:event_emailTextFieldFocusLost
+
+    private void nomAlTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomAlTextFieldFocusLost
+        // TODO add your handling code here:
+        if (nomAlTextField.getText().equals("")) {
+            nomAlTextField.setForeground(Color.red);
+            nomAlTextField.setText("No pot estar buit!");
+        }
+        acceptaAl();
+        
+        
+    }//GEN-LAST:event_nomAlTextFieldFocusLost
+
+    private void nomAlTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomAlTextFieldFocusGained
+        // TODO add your handling code here:
+        nomAlTextField.setForeground(Color.black);
+    }//GEN-LAST:event_nomAlTextFieldFocusGained
+
+    private void tipusAlTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tipusAlTextFieldFocusGained
+        // TODO add your handling code here:
+        tipusAlTextField.setForeground(Color.black);
+    }//GEN-LAST:event_tipusAlTextFieldFocusGained
+
+    private void tipusAlTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tipusAlTextFieldFocusLost
+        // TODO add your handling code here:
+        if (tipusAlTextField.getText().equals("")) {
+            tipusAlTextField.setForeground(Color.red);
+            tipusAlTextField.setText("No pot estar buit!");
+        }
+        acceptaAl();
+    }//GEN-LAST:event_tipusAlTextFieldFocusLost
+
+    private void calTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_calTextFieldFocusGained
+        // TODO add your handling code here:
+        calTextField.setForeground(Color.black);
+    }//GEN-LAST:event_calTextFieldFocusGained
+
+    private void calTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_calTextFieldFocusLost
+        // TODO add your handling code here:
+        if (!calTextField.getText().matches("\\d+")){
+            calTextField.setForeground(Color.red);
+            calTextField.setText("Format incorrecte!");
+        }
+        acceptaAl();
+    }//GEN-LAST:event_calTextFieldFocusLost
 
     /**
      * @param args the command line arguments
@@ -863,7 +958,6 @@ public class MainFrame extends javax.swing.JFrame {
                     break;
                 }
             }
-            out.close();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Error en la escriptura", JOptionPane.ERROR_MESSAGE);
         }
@@ -875,39 +969,45 @@ public class MainFrame extends javax.swing.JFrame {
         tipus = new TreeSet<>();
 
         if (f.exists()) {
-            ObjectInputStream entrada = new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)));
-
-            while (true) {
-                try {
-                    Animal a = (Animal) entrada.readObject();
-                    animals.add(a);
-                    ArrayList<Aliment> la = a.get5menja();
-                    aliments.addAll(la);
-                    tipus.add(a.get2tipus());
-                } catch (Exception ex) {
-                    break;
+            try (
+                    ObjectInputStream entrada = new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)));) {
+                while (true) {
+                    try {
+                        Animal a = (Animal) entrada.readObject();
+                        animals.add(a);
+                        ArrayList<Aliment> la = a.get5menja();
+                        aliments.addAll(la);
+                        tipus.add(a.get2tipus());
+                    } catch (Exception ex) {
+                        break;
+                    }
                 }
+
             }
-            entrada.close();
+
         } else {
             JOptionPane.showMessageDialog(rootPane, "No s'ha carregat correctament. El fitxer no existeix.", "Error en la càrrega", JOptionPane.ERROR_MESSAGE);
         }
 
     }
 
-    private void setPrincipi() {        
+    private void setPrincipi() {
         ModelTaula<Animal> mt = new ModelTaula(new String[]{"Nom", "Tipus", "Pes", "E-mail del propietari", "Aliments"}, MainFrame.animals, Animal.class);
 
         llistarTable.setModel(mt);
         llistarTable.setRowSelectionAllowed(false);
-        
+
         Iterator<String> it = tipus.iterator();
-        while(it.hasNext()){
-          tipusComboBox.addItem(it.next());
+        while (it.hasNext()) {
+            tipusComboBox.addItem(it.next());
         }
-        
+
         animalsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+        nomTextField.setToolTipText("El nom ha de tenir com a mínim un caràcter.");
+        pesTextField.setToolTipText("Ha de ser un número real. Els números reals porten '.' i no ','.");
+        emailTextField.setToolTipText("El format ha de ser un.exemple@exemple.com. On el primer punt és opcional.");
+        calTextField.setToolTipText("Ha de ser un número enter!!");
+
         jPanel3.removeAll();
         jPanel3.revalidate();
         jPanel3.add(welcomePanel);
@@ -921,7 +1021,7 @@ public class MainFrame extends javax.swing.JFrame {
         tipusComboBox.setSelectedIndex(0);
         pesTextField.setText("");
         emailTextField.setText("");
-        AlimentsAnimalTable.getSelectionModel().clearSelection(); 
+        AlimentsAnimalTable.getSelectionModel().clearSelection();
         animalsTable.getSelectionModel().clearSelection();
         borraAnimalButton.setEnabled(false);
         modificaAnimalButton.setEnabled(false);
@@ -929,23 +1029,31 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void acceptaONo() {
-        int i=animalsTable.getSelectedRow();
-        
+        int i = animalsTable.getSelectedRow();
 
-        if(nomTextField.getText().equals("") || nomTextField.getText().equals("No pot estar buit!")
-                || !pesTextField.getText().matches("\\d+\\.?\\d*") || pesTextField.getText().equals("Format incorrecte!")){
+        if (nomTextField.getText().equals("") || nomTextField.getText().equals("No pot estar buit!")
+                || !pesTextField.getText().matches("\\d+\\.?\\d*") || pesTextField.getText().equals("Format incorrecte!")
+                || !emailTextField.getText().matches("\\w+\\.?\\w+@\\w+\\.\\w+") || emailTextField.getText().equals("Format incorrecte!")) {
             borraAnimalButton.setEnabled(false);
             modificaAnimalButton.setEnabled(false);
             creaAnimalButton.setEnabled(false);
+        } else if (i != -1) {
+            borraAnimalButton.setEnabled(true);
+            modificaAnimalButton.setEnabled(true);
+        } else {
+            creaAnimalButton.setEnabled(true);
         }
-        else{
-            if(i!=-1){
-                borraAnimalButton.setEnabled(true);
-                modificaAnimalButton.setEnabled(true); 
-            }else{
-                creaAnimalButton.setEnabled(true); 
-            }
-              
+    }
+
+    private void acceptaAl() {
+        if(
+                nomAlTextField.getText().equals("") || nomAlTextField.getText().equals("No pot estar buit!")
+                || tipusAlTextField.getText().equals("") || tipusAlTextField.getText().equals("No pot estar buit!")
+                || !calTextField.getText().matches("\\d+") || calTextField.getText().equals("Format incorrecte!")
+                ){
+            creaAlButton.setEnabled(false);
+        }else{
+           creaAlButton.setEnabled(true); 
         }
     }
 }

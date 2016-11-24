@@ -293,10 +293,22 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="nomAlTextField">
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nomAlTextFieldFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nomAlTextFieldFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tipusAlTextField">
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tipusAlTextFieldFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tipusAlTextFieldFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="calTextField">
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="calTextFieldFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="calTextFieldFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="creaAlButton">
                       <Properties>
@@ -376,7 +388,7 @@
                                       <EmptySpace min="0" pref="481" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -403,10 +415,10 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                              <Component id="nomTextField" min="-2" pref="98" max="-2" attributes="0"/>
+                                              <Component id="nomTextField" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="77" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -506,6 +518,10 @@
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="emailTextField">
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailTextFieldFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailTextFieldFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="creaAnimalButton">
                       <Properties>
